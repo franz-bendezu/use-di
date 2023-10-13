@@ -14,9 +14,9 @@ importers:
       eslint:
         specifier: ^7.32.0
         version: 7.32.0
-      eslint-config-acme:
+      eslint-config-use-di:
         specifier: workspace:*
-        version: link:packages/eslint-config-acme
+        version: link:packages/eslint-config-use-di
       prettier:
         specifier: ^2.5.1
         version: 2.8.0
@@ -26,12 +26,12 @@ importers:
 
   apps/docs:
     dependencies:
-      '@acme/core':
+      '@use-di/core':
         specifier: workspace:*
-        version: link:../../packages/acme-core
-      '@acme/utils':
+        version: link:../../packages/use-di-core
+      '@use-di/utils':
         specifier: workspace:*
-        version: link:../../packages/acme-utils
+        version: link:../../packages/use-di-utils
       next:
         specifier: ^13.4.1
         version: 13.4.1(react-dom@18.2.0)(react@18.2.0)
@@ -42,9 +42,6 @@ importers:
         specifier: ^18.2.0
         version: 18.2.0(react@18.2.0)
     devDependencies:
-      '@acme/tsconfig':
-        specifier: workspace:*
-        version: link:../../packages/acme-tsconfig
       '@types/node':
         specifier: ^17.0.12
         version: 17.0.45
@@ -54,70 +51,17 @@ importers:
       '@types/react-dom':
         specifier: ^18.0.7
         version: 18.0.9
-      eslint-config-acme:
+      '@use-di/tsconfig':
         specifier: workspace:*
-        version: link:../../packages/eslint-config-acme
+        version: link:../../packages/use-di-tsconfig
+      eslint-config-use-di:
+        specifier: workspace:*
+        version: link:../../packages/eslint-config-use-di
       typescript:
         specifier: ^4.5.4
         version: 4.9.3
 
-  packages/acme-core:
-    devDependencies:
-      '@acme/tsconfig':
-        specifier: workspace:*
-        version: link:../acme-tsconfig
-      '@types/react':
-        specifier: ^18.2.0
-        version: 18.2.5
-      '@types/react-dom':
-        specifier: ^18.2.0
-        version: 18.2.4
-      eslint:
-        specifier: ^7.32.0
-        version: 7.32.0
-      eslint-config-acme:
-        specifier: workspace:*
-        version: link:../eslint-config-acme
-      react:
-        specifier: ^17.0.2
-        version: 17.0.2
-      tsup:
-        specifier: ^5.10.1
-        version: 5.12.9(typescript@4.9.3)
-      typescript:
-        specifier: ^4.5.3
-        version: 4.9.3
-
-  packages/acme-tsconfig: {}
-
-  packages/acme-utils:
-    devDependencies:
-      '@acme/tsconfig':
-        specifier: workspace:*
-        version: link:../acme-tsconfig
-      '@types/react':
-        specifier: ^18.2.0
-        version: 18.2.5
-      '@types/react-dom':
-        specifier: ^18.2.0
-        version: 18.2.4
-      eslint:
-        specifier: ^7.32.0
-        version: 7.32.0
-      eslint-config-acme:
-        specifier: workspace:*
-        version: link:../eslint-config-acme
-      react:
-        specifier: ^18.2.0
-        version: 18.2.0
-      tsup:
-        specifier: ^5.10.1
-        version: 5.12.9(typescript@4.9.3)
-      typescript:
-        specifier: ^4.5.3
-        version: 4.9.3
-
-  packages/eslint-config-acme:
+  packages/eslint-config-use-di:
     dependencies:
       eslint-config-next:
         specifier: ^13.4.1
@@ -131,6 +75,62 @@ importers:
       eslint-plugin-react:
         specifier: 7.28.0
         version: 7.28.0(eslint@7.32.0)
+
+  packages/use-di-core:
+    devDependencies:
+      '@types/react':
+        specifier: ^18.2.0
+        version: 18.2.5
+      '@types/react-dom':
+        specifier: ^18.2.0
+        version: 18.2.4
+      '@use-di/tsconfig':
+        specifier: workspace:*
+        version: link:../use-di-tsconfig
+      eslint:
+        specifier: ^7.32.0
+        version: 7.32.0
+      eslint-config-use-di:
+        specifier: workspace:*
+        version: link:../eslint-config-use-di
+      react:
+        specifier: ^17.0.2
+        version: 17.0.2
+      tsup:
+        specifier: ^5.10.1
+        version: 5.12.9(typescript@4.9.3)
+      typescript:
+        specifier: ^4.5.3
+        version: 4.9.3
+
+  packages/use-di-tsconfig: {}
+
+  packages/use-di-utils:
+    devDependencies:
+      '@types/react':
+        specifier: ^18.2.0
+        version: 18.2.5
+      '@types/react-dom':
+        specifier: ^18.2.0
+        version: 18.2.4
+      '@use-di/tsconfig':
+        specifier: workspace:*
+        version: link:../use-di-tsconfig
+      eslint:
+        specifier: ^7.32.0
+        version: 7.32.0
+      eslint-config-use-di:
+        specifier: workspace:*
+        version: link:../eslint-config-use-di
+      react:
+        specifier: ^18.2.0
+        version: 18.2.0
+      tsup:
+        specifier: ^5.10.1
+        version: 5.12.9(typescript@4.9.3)
+      typescript:
+        specifier: ^4.5.3
+        version: 4.9.3
 
 packages:
 
@@ -1441,6 +1441,7 @@ packages:
 
   /eslint-config-prettier@8.5.0(eslint@7.32.0):
     resolution: {integrity: sha512-obmWKLUNCnhtQRKc+tmnYuQl0pFU1ibYJQ5BGhTVB08bHe9wC8qUeG7c08dj9XX+AuPj1YSGSQIHl1pnDHZR0Q==}
+    hasBin: true
     peerDependencies:
       eslint: '>=7.0.0'
     dependencies:
@@ -2479,6 +2480,7 @@ packages:
   /next@13.4.1(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-JBw2kAIyhKDpjhEWvNVoFeIzNp9xNxg8wrthDOtMctfn3EpqGCmW0FSviNyGgOSOSn6zDaX48pmvbdf6X2W9xA==}
     engines: {node: '>=16.8.0'}
+    hasBin: true
     peerDependencies:
       '@opentelemetry/api': ^1.1.0
       fibers: '>= 3.1.0'
@@ -3319,6 +3321,7 @@ packages:
 
   /tsup@5.12.9(typescript@4.9.3):
     resolution: {integrity: sha512-dUpuouWZYe40lLufo64qEhDpIDsWhRbr2expv5dHEMjwqeKJS2aXA/FPqs1dxO4T6mBojo7rvo3jP9NNzaKyDg==}
+    hasBin: true
     peerDependencies:
       '@swc/core': ^1
       postcss: ^8.4.12

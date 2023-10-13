@@ -1,4 +1,4 @@
-import { Button } from "@acme/core";
+import { Button } from "@use-di/core";
 
 export default function Page() {
   return (
